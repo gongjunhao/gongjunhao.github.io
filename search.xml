@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Cookies提取助手</title>
+      <link href="/2019/06/17/zuo-pin/chrome-cha-jian-cookies-ti-qu-zhu-shou/"/>
+      <url>/2019/06/17/zuo-pin/chrome-cha-jian-cookies-ti-qu-zhu-shou/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>入门爬虫，基本上都会遇到的环节—“验证码”（阻止程序自动化）。<br>就是这个东西使得很多程序的自动化工作止步，让人懊恼不已。</p></blockquote><p>Cookies提取助手的出现，可以通过手工输入验证码，免去程序实现验证码识别的繁琐实现，<br>提取有效可用的Cookies，提供给爬虫抓取程序，实现免验证码爬取。</p><h3 id="功能特点"><a href="#功能特点" class="headerlink" title="功能特点"></a>功能特点</h3><ul><li>自定义服务器地址（API）</li><li>操作简单，页面右键菜单提取</li><li>可将Cookies上传至服务器，长期使用</li><li>可将Cookies拷贝至剪切板，调试快捷使用</li></ul><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul><li>适用场景:验证码登录才能爬取的网站，手动输入验证码获取有效Cookies使用，且网站未针对Cookies进行反爬虫处理。</li></ul><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul><li>chrome浏览器，设置 –&gt; 更多工具 –&gt; 扩展程序</li><li>勾选开发者模式</li><li>拖拽*.crx包至此扩展页面释放，确认安装即可</li><li>详细操作步骤，参考：<a href="http://www.jianshu.com/p/12ca04c61fc6" target="_blank" rel="noopener">http://www.jianshu.com/p/12ca04c61fc6</a></li></ul><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul><li>点击浏览器“Cookies提取助手”扩展程序按钮，弹框里输入HTTP服务器接口地址</li><li>登录需要爬取的网站成功后，在页面点击鼠标右键</li><li>选择“Cookies提取助手”</li><li>选择“提取Cookies更新服务器”</li><li>选择“提取Cookies至剪切板”</li></ul><p><img src="https://github.com/gongjunhao/cookie-extraction/blob/master/doc/usage.gif" alt="usage"></p><h3 id="服务器接口说明"><a href="#服务器接口说明" class="headerlink" title="服务器接口说明"></a>服务器接口说明</h3><p>目前仅支付HTTP接口：</p><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> json <span class="token operator">=</span> <span class="token punctuation">{</span>        <span class="token string">"domain"</span><span class="token punctuation">:</span> curDomain<span class="token punctuation">,</span>        <span class="token string">"cookies"</span><span class="token punctuation">:</span> cookies    <span class="token punctuation">}</span><span class="token punctuation">;</span>$<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>        type<span class="token punctuation">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>        url<span class="token punctuation">:</span> ufindServerAPI<span class="token punctuation">,</span>        contentType<span class="token punctuation">:</span> <span class="token string">"application/json; charset=utf-8"</span><span class="token punctuation">,</span>        data<span class="token punctuation">:</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span><span class="token punctuation">,</span>        dataType<span class="token punctuation">:</span> <span class="token string">"json"</span><span class="token punctuation">,</span>        success<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>data<span class="token punctuation">.</span>status <span class="token operator">==</span> <span class="token string">"1"</span> <span class="token operator">&amp;&amp;</span> data<span class="token punctuation">.</span>successful<span class="token punctuation">)</span> <span class="token punctuation">{</span>                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"服务器Cookies信息更新成功！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">}</span>        <span class="token punctuation">}</span><span class="token punctuation">,</span>        error<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>XMLHttpRequest<span class="token punctuation">,</span> textStatus<span class="token punctuation">,</span> errorThrown<span class="token punctuation">)</span> <span class="token punctuation">{</span>            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"服务器Cookies信息更新失败！错误码："</span><span class="token operator">+</span>XMLHttpRequest<span class="token punctuation">.</span>status<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><h3 id="引用资源"><a href="#引用资源" class="headerlink" title="引用资源"></a>引用资源</h3><ul><li>Logo <a href="http://www.easyicon.net/1185943-Extract_object_icon.html" target="_blank" rel="noopener">http://www.easyicon.net/1185943-Extract_object_icon.html</a></li></ul><h3 id="问题反馈"><a href="#问题反馈" class="headerlink" title="问题反馈"></a>问题反馈</h3><ul><li><a href="https://github.com/gongjunhao/cookie-extraction/issues" target="_blank" rel="noopener">https://github.com/gongjunhao/cookie-extraction/issues</a></li></ul><h3 id="LICENSE"><a href="#LICENSE" class="headerlink" title="LICENSE"></a>LICENSE</h3><p>MIT License</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 作品 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Cookies提取插件 </tag>
+            
+            <tag> Cookies上传接口 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Chrome浏览器 抢购、秒杀插件（秒杀助手）</title>
       <link href="/2019/06/17/zuo-pin/chrome-miao-sha-cha-jian-zi-dong-dian-ji-zhu-shou/"/>
       <url>/2019/06/17/zuo-pin/chrome-miao-sha-cha-jian-zi-dong-dian-ji-zhu-shou/</url>
